@@ -1,1 +1,20 @@
-[]
+[
+  {
+    "id": 1,
+    "client": "John Doe",
+    "process_number": "123456789",
+    "court": "District Court",
+    "type": "Civil",
+    "data": "Case details here.",
+    "status": "Pending"
+  },
+  {
+    "id": 2,
+    "client": "Jane Smith",
+    "process_number": "987654321",
+    "court": "Supreme Court",
+    "type": "Criminal",
+    "data": "Case details here.",
+    "status": "Closed"
+  }
+]

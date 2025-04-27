@@ -1,7 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Stack } from "expo-router";
 import { useEffect, useState } from "react";
-import processData from "../data/process.json";
 import userData from "../data/user.json";
 
 export default function RootLayout() {

@@ -39,8 +39,10 @@ export default function ProcessosScreen() {
 
   async function carregarDados() {
     try {
+      // Carregar dados do AsyncStorage
       const savedProcesses = await AsyncStorage.getItem("@processos");
-      if (savedProcesses !== null) {
+
+      if (savedProcesses) {
         setProcesses(JSON.parse(savedProcesses));
       } else {
         setProcesses(processData);
@@ -48,6 +50,7 @@ export default function ProcessosScreen() {
       }
     } catch (error) {
       console.error("Erro ao carregar dados:", error);
+      setProcesses([]);
     }
   }
 

@@ -1,39 +1,42 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
-import { StatusBar } from 'expo-status-bar';
-import { useEffect } from 'react';
-import 'react-native-reanimated';
-
-import { useColorScheme } from '@/hooks/useColorScheme';
-
-// Prevent the splash screen from auto-hiding before asset loading is complete.
-SplashScreen.preventAutoHideAsync();
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Stack } from "expo-router";
+import { useEffect, useState } from "react";
+import processData from "../data/process.json";
+import userData from "../data/user.json";
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
-  const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-  });
+  // const [user, setUser] = useState(null);
+  // const [settings, setSettings] = useState(null);
 
-  useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
-    }
-  }, [loaded]);
+  // useEffect(() => {
+  //   carregarDados();
+  // }, []);
 
-  if (!loaded) {
-    return null;
-  }
+  // async function carregarDados() {
+  //   try {
+  //     // Carregar usuário
+  //     const usuarioSalvo = await AsyncStorage.getItem("@usuario");
+  //     if (usuarioSalvo !== null) {
+  //       setUser(JSON.parse(usuarioSalvo));
+  //     } else {
+  //       setUser(userData);
+  //       await AsyncStorage.setItem("@usuario", JSON.stringify(userData));
+  //     }
 
-  return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
-  );
+  //     // Carregar configurações
+  //     const settingsSalvos = await AsyncStorage.getItem("@configuracoes");
+  //     if (settingsSalvos !== null) {
+  //       setSettings(JSON.parse(settingsSalvos));
+  //     } else {
+  //       setSettings(settingsData);
+  //       await AsyncStorage.setItem(
+  //         "@configuracoes",
+  //         JSON.stringify(processData)
+  //       );
+  //     }
+  //   } catch (error) {
+  //     console.error("Erro ao carregar dados:", error);
+  //   }
+  // }
+  return <Stack screenOptions={{ headerShown: false }} />;
 }
